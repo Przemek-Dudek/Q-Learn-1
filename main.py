@@ -9,10 +9,10 @@ GAMMA = 0.9
 EPSILON = 1
 
 root = tkinter.Tk()
-root.title("DeepQ")
+root.title("Q-Learn-1")
 
 frm = tkinter.Frame(root)
-
+tkinter.Button(frm, text="Quit", font=("Helvetica", 20), command=root.destroy).grid(column=9, row=0, rowspan=3)
 
 def get_description(number, final_pass):
     text = "Pass no."
