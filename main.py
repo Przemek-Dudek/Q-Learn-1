@@ -1,5 +1,4 @@
 import random
-from random import randint
 
 array = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
 
@@ -17,7 +16,7 @@ def get_reward(state):
 
 def next_move(state):
     if random.randrange(0, 1) < EPSILON:
-        if randint(0, 1) == 1:
+        if random.randint(0, 1) == 1:
             return 1
 
         return -1
@@ -54,8 +53,13 @@ def one_pass():
         state = next_state
 
 
+number_of_steps = 0
+
 while max(array[0][0], array[1][0]) == 0:
     one_pass()
-    print(array)
+    EPSILON = EPSILON - 0.1
+    number_of_steps = number_of_steps + 1
 
-print(array)
+print("number of passes = ", number_of_steps)
+print("Weights L = ", array[0])
+print("Weights P = ", array[1])
