@@ -17,7 +17,7 @@ frm = tkinter.Frame(root)
 def get_description(number, final_pass):
     text = "Pass no."
     if final_pass:
-        return " FINAL "
+        return "  FINAL  "
 
     return text + str(number)
 
