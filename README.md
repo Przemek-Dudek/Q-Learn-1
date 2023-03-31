@@ -1,4 +1,4 @@
-# Q-Learn-1-
+# Q-Learn-1
 Pierwsze podejście do Q-learningu.
 
 ☒☐☐☐☐☐☑
