@@ -1,10 +1,36 @@
 import random
+import time
+import tkinter
 
 array = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
 
 ALPHA = 0.1
 GAMMA = 0.9
 EPSILON = 1
+
+root = tkinter.Tk()
+root.title("DeepQ")
+
+frm = tkinter.Frame(root)
+
+
+def draw(status):
+    frm.grid()
+
+    for i in range(6):
+        if i == status:
+            tkinter.Label(frm, text="☒", font=("Helvetica", 100)).grid(column=i, row=0)
+            continue
+
+        tkinter.Label(frm, text="☐", font=("Helvetica", 100)).grid(column=i, row=0)
+
+    if status != 7:
+        tkinter.Label(frm, text="☑", font=("Helvetica", 100)).grid(column=7, row=0)
+    else:
+        tkinter.Label(frm, text="☒", font=("Helvetica", 100)).grid(column=7, row=0)
+
+    frm.update()
+    time.sleep(0.25)
 
 
 def get_reward(state):
@@ -45,6 +71,8 @@ def one_pass():
     state = 0
 
     while state != 6:
+        draw(state)
+
         move = next_move(state)
         next_state = max(state+move, 0)
 
@@ -52,6 +80,7 @@ def one_pass():
 
         state = next_state
 
+    draw(7)
 
 number_of_steps = 0
 
@@ -63,3 +92,7 @@ while max(array[0][0], array[1][0]) == 0:
 print("number of passes = ", number_of_steps)
 print("Weights L = ", array[0])
 print("Weights P = ", array[1])
+
+root.mainloop()
+
+
